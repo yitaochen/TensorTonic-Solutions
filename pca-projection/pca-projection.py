@@ -21,7 +21,7 @@ def pca_projection(X, k):
             v = v_new / np.linalg.norm(v_new)
         W.append(v)
         eigen_val = (v.T @ C) @ v
-        C -= eigen_val * np.outer(v, v)
+        C -= eigen_val * v[:, None] * v[None, :]
 
     W = np.hstack(W).reshape((d, k))
     # print(W.shape)
