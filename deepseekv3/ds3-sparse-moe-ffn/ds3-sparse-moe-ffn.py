@@ -19,7 +19,7 @@ def moe_ffn(x, gate_weight, expert_W_gates, expert_W_ups, expert_W_downs,
     indices_flat = indices.reshape(B*S, top_k)
     weights_flat = weights.reshape(B*S, top_k)
     routed_flat = torch.zeros_like(x_flat)
-    n_experts = shared_W_gate.shape[0]
+    n_experts = len(expert_W_gates)
 
     for e in range(n_experts):
         token_idx, slot_idx = torch.where(indices_flat == e)
