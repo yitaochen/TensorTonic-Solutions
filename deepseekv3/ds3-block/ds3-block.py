@@ -49,7 +49,7 @@ def ds3_block(x, W_q, W_k, W_v, W_o, gamma_attn, gamma_ffn,
         
         routed_flat = torch.zeros_like(x1hat_flat)
         
-        n_experts = shared_W_gate.shape[0]
+        n_experts = len(expert_W_gates)
 
         for e in range(n_experts):
             token_idx, slot_idx = torch.where(indices_flat == e)
