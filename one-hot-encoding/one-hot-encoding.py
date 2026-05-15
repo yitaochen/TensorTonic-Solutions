@@ -6,9 +6,9 @@ def one_hot(y, num_classes=None):
     """
     # Write code here
     N = len(y)
-    unique_vals, counts = np.unique(y, return_counts=True)
+    MAX = max(y)
     if num_classes is None:
-        num_classes = unique_vals[-1] + 1
+        num_classes = MAX + 1
     indices = np.searchsorted(np.arange(num_classes), y)
     one_hot = np.zeros((N, num_classes))
     one_hot[np.arange(N), indices] = 1
