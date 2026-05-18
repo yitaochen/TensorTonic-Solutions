@@ -9,7 +9,7 @@ def prepend_class_token(patches: np.ndarray, embed_dim: int, cls_token: np.ndarr
     B, N, D = patches.shape
     if cls_token is None:
         cls_token = np.random.randn(1, 1, D) * 0.02 
-    cls_token = np.tile(cls_token, (B, 1, 1))
+    cls_token = np.repeat(cls_token, B, axis=0)
     return np.concatenate((cls_token, patches), axis=1)
         
     
